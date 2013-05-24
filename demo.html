@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+		<title>RegBuddy Web</title>
+		<style type="text/css">
+			div[contenteditable]{
+				height:26px;
+				width: 180px;
+				line-height: 1.5;
+				border: 1px solid #333;
+				text-indent: 2px;
+				margin-right:20px;
+				float: left;
+			}
+			#billborad{
+				height: 200px;
+				width: 400px;
+				background: #BBB;
+				float: right;
+				margin:20px;
+			}
+		</style>
+		<script type="text/javascript" src="regbuddy.js"></script>
+	</head>
+	<body>
+		<div contenteditable="true" type="text" id="input" >string</div>
+		<div contenteditable="true" type="text" id="reg" >/\s/</div>
+		<div id="billborad"></div>
+		<script>
+			var input = document.querySelector('#input');
+			var reg = document.querySelector('#reg');
+			var display = document.querySelector('#billborad');
+
+			function format(arr){
+				var html = '';
+				var value = input.innerText;
+				if(arr){
+					for(var i = 0, l = arr.length; i < l; i++){
+						value.indexOf(arr[i]);
+						html += '<section>' + value + '<section>';
+					}	
+				}
+				return html;
+			}
+
+			input.onblur = function(){
+				display.innerHTML = format(RegBuddy(input.innerText, reg.innerText));
+			};
+
+			reg.onblur = function(){
+				display.innerHTML = format(RegBuddy(input.innerText, reg.innerText));
+			};
+
+		</script>
+	</body>
+</html>
